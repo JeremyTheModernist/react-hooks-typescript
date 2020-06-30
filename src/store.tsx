@@ -47,7 +47,7 @@ var Store = createContext<ContextShape | undefined>(undefined);
 // This type has defaultProps
 // can also use: React.FC<React.ReactNode> after component name, which is for children
 export const StoreProvider = ({ children }: Props) => {
-	// useState expects a type of props or null
+	// useState expects a type of initial state or null
 	var [state, setState] = useState<IState | null>(initialState);
 	return (
 		<Store.Provider value={[state, setState]}>{children}</Store.Provider>
