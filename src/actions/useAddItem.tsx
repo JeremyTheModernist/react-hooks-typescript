@@ -15,17 +15,13 @@ export var useAddItem = () => {
 	var [state, setState] = useStore()!;
 	// I could use an object called props: Props; but I don't get automatic type suggestions in other files
 	// by extracting individual properties out, I get type suggestions in other files.
-	function addItem(title: string, description: string, duration: string) {
-		console.log("adding your item!", title);
-		setState([...state!, { title, description, duration, id: uuid() }]);
-		// setState([
-		// 	{ id: uuid(), title: "a", description: "h", duration: "h" },
-		// 	...state!,
-		// ]);
-		console.log("adding your item!", ...state!);
-	}
-	// function addItem(props: Props) {
-	// 	setState([...state!, { ...props, id: uuid() }]);
+	// function addItem(title: string, description: string, duration: string) {
+	// 	console.log("adding your item!", title);
+	// 	setState([...state!, { title, description, duration, id: uuid() }]);
+	// 	console.log("adding your item!", ...state!);
 	// }
+	function addItem(props: Props) {
+		setState([...state!, { ...props, id: uuid() }]);
+	}
 	return addItem;
 };
