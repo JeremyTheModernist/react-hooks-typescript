@@ -10,7 +10,7 @@ var inputStyle,
 	};
 
 const ListItems = () => {
-	var [state] = useStore();
+	var { state } = useStore();
 	var addItem = useAddItem();
 	var removeItem = useRemoveItem();
 	var [item, setItem] = useState({

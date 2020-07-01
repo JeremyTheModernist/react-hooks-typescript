@@ -37,11 +37,16 @@ type IState = {
 }[];
 
 // define the type for the context provider input where the first value represents the state and second one represents setState
-type ContextShape = [IState | null, (props: IState) => void | IState];
+// make an object so it's easier to work with in other components, auto-suggest
+type ContextShape = {
+	state: IState | null;
+	setState: (props: IState) => void | IState;
+};
 
 // use ContextShape and undefined
 // <> represent a generic and tell React what type the passed in value should be for this context
-var Store = createContext<ContextShape | undefined>(undefined);
+// var Store = createContext<ContextShape | undefined>(undefined);
+var Store = createContext({} as ContextShape);
 
 // Tell Store Provider that it should be of type React.FC ( functional component )
 // This type has defaultProps
@@ -50,7 +55,9 @@ export const StoreProvider = ({ children }: Props) => {
 	// useState expects a type of initial state or null
 	var [state, setState] = useState<IState | null>(initialState);
 	return (
-		<Store.Provider value={[state, setState]}>{children}</Store.Provider>
+		<Store.Provider value={{ state, setState } as ContextShape}>
+			{children}
+		</Store.Provider>
 	);
 };
 

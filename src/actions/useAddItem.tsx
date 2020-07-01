@@ -12,7 +12,7 @@ type Props = {
 // you want to return a function for this hook with props defined in the function, so React rerenders when it is called.
 export var useAddItem = () => {
 	// the bang! tells typescript that this value may be null and not to complain about it.
-	var [state, setState] = useStore()!;
+	var { state, setState } = useStore();
 	// I could use an object called props: Props; but I don't get automatic type suggestions in other files
 	// by extracting individual properties out, I get type suggestions in other files.
 	// function addItem(title: string, description: string, duration: string) {
