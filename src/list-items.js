@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import { useStore } from "./store";
-import { useAddItem } from "./actions/useAddItem";
-import { useRemoveItem } from "./actions/useRemoveItem";
+import { useAddItem } from "./hooks/useAddItem";
+import { useRemoveItem } from "./hooks/useRemoveItem";
 
 var inputStyle,
 	buttonStyle = {
